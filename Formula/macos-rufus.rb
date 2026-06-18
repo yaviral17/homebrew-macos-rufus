@@ -1,8 +1,8 @@
 class MacosRufus < Formula
   desc "Rufus for macOS — create bootable Windows 7/8/10/11 USB drives from your Mac"
   homepage "https://github.com/yaviral17/macos-rufus"
-  url "https://github.com/yaviral17/macos-rufus/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "114f5b8958b2eaf875a5866c17f695c35bcb786ac63bff8faf55a862c9bd944b"
+  url "https://github.com/yaviral17/macos-rufus/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "3c05c35d7b70e7344dc925cfc778aac9954e19c36ef021ecd288a74c1c0cb7f2"
   license "MIT"
 
   depends_on "python@3.12"
