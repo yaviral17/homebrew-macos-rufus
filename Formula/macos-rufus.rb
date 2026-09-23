@@ -1,8 +1,8 @@
 class MacosRufus < Formula
-  desc "Rufus for macOS — create bootable Windows 7/8/10/11 USB drives from your Mac"
+  desc "Rufus for macOS — create bootable Windows and Linux USB drives"
   homepage "https://github.com/yaviral17/macos-rufus"
-  url "https://github.com/yaviral17/macos-rufus/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "a36a591f8bf2b01e905007dda3b25cdbe6564d3df6dadf77948cd16f04fa2f86"
+  url "https://github.com/yaviral17/macos-rufus/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "2c95c0fb9c1934ff171684d58c19e8e3acb4352d75a87746b7b46b4bcfa5de33"
   license "MIT"
 
   depends_on "python@3.12"
@@ -11,7 +11,7 @@ class MacosRufus < Formula
   def install
     venv = libexec/"venv"
     system "python3", "-m", "venv", venv
-    system "#{venv}/bin/pip", "install", "--quiet", "rich"
+    system "#{venv}/bin/pip", "install", "--quiet", "rich", "requests", "playwright"
     libexec.install "rufus.py"
 
     (bin/"macos-rufus").write <<~SH
@@ -21,6 +21,7 @@ class MacosRufus < Formula
   end
 
   test do
-    assert_predicate bin/"macos-rufus", :exist?
+    assert_path_exists bin/"macos-rufus"
+    assert_match "1.3.0", shell_output("#{bin}/macos-rufus --version")
   end
 end
